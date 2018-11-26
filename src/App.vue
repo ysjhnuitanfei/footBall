@@ -4,7 +4,10 @@
     <div class="page-content">
       <Loading :isLoading="isLoading"></Loading>
       <Error :error="error"></Error>
-      <router-view></router-view>
+      <keep-alive v-if="$route.meta.keepAlive">
+        <router-view></router-view>
+      </keep-alive>
+      <router-view v-else></router-view>
     </div>
     <Footer :showFooter="showFooter"></Footer>
   </div>

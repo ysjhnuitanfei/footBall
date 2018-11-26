@@ -1,8 +1,10 @@
 <template>
-  <div class="page clearfix">
-    <headerNav></headerNav>
-    <splendId></splendId>
-  </div>
+  <keep-alive>
+    <div class="page clearfix">
+      <headerNav></headerNav>
+      <splendId></splendId>
+    </div>
+  </keep-alive>
 </template>
 <script>
 import headerNav from './components/headerNav'

@@ -21,7 +21,8 @@ let router = new Router({
       meta: {
         title: '首页',
         showHeader: false,
-        showFooter: true
+        showFooter: true,
+        keepAlive: true
       }
     }]
   },
