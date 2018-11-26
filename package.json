@@ -88,5 +88,15 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "ball": {
+    "devPort": 9999,
+    "proxyTable": {
+      "/api/**.do": {
+        "target": "http://www.baidu.com",
+        "changeOrigin": true,
+        "secure": true
+      }
+    }
+  }
 }

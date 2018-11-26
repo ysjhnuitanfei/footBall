@@ -1,10 +1,11 @@
 <template>
   <div class='headerInfo'>
-    <swiper :options="swiperOption">
+    <swiper ref="mySwiper" :options="swiperOption">
       <swiper-slide v-for="(item, index) in swiperList" :key="index">
         <img class="banner-img" :src="item.imgUrl">
         <div class="banner-text">{{item.title}}</div>
       </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
   </div>
 </template>
@@ -22,29 +23,31 @@ export default {
       swiperList: [
         {
           title: '巴西双循环11人制火热进行中',
-          imgUrl: '@/assests/images/home/banner1.jpg'
+          imgUrl: require('@/assets/images/home/banner1.jpg')
         },
         {
           title: '巴西双循环11人制火热进行中',
-          imgUrl: '@/assests/images/home/banner2.jpg'
+          imgUrl: require('@/assets/images/home/banner2.jpg')
         },
         {
           title: '巴西双循环11人制火热进行中',
-          imgUrl: '@/assests/images/home/banner3.jpg'
+          imgUrl: require('@/assets/images/home/banner3.jpg')
         },
         {
           title: '巴西双循环11人制火热进行中',
-          imgUrl: '@/assests/images/home/banner4.jpg'
+          imgUrl: require('@/assets/images/home/banner4.jpg')
         },
         {
           title: '巴西双循环11人制火热进行中',
-          imgUrl: '@/assests/images/home/banner5.jpg'
+          imgUrl: require('@/assets/images/home/banner5.jpg')
         }
       ],
       swiperOption: {
-        pagination: '.swiper-pagination',
+        pagination: {
+          el: '.swiper-pagination'
+        },
         paginationClickable: true,
-        autoplay: 2500,
+        autoplay: true,
         autoplayDisableOnInteraction: false,
         loop: true,
         coverflow: {
@@ -62,16 +65,31 @@ export default {
   methods: {
   },
   mounted () {
+  },
+  computed: {
+    swiper () {
+      return this.$refs.mySwiper.swiper
+    }
   }
 }
 </script>
 <style lang="less">
 .headerInfo {
   position: relative;
-  height: 500px;
+  height: 550px;
   .swiper-container {
     position: relative;
     height: 100%;
+    .swiper-pagination {
+      bottom: 80px;
+      .swiper-pagination-bullet {
+        width: 20px;
+        height: 20px;
+        &.swiper-pagination-bullet-active {
+          background: #41a1f5;
+        }
+      }
+    }
     .banner-img {
       width: 100%;
       height: 100%;

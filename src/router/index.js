@@ -5,35 +5,56 @@ import store from '../store/'
 Vue.use(Router)
 const Index = resolve => require(['@/views/Index/Index'], resolve)
 const League = resolve => require(['@/views/League/Index'], resolve)
+const Team = resolve => require(['@/views/Team/Index'], resolve)
+const User = resolve => require(['@/views/User/Index'], resolve)
 
 let router = new Router({
-  routes: [
-    {
-      path: '/',
-      redirect: 'index',
+  routes: [{
+    path: '/',
+    redirect: 'index',
+    component: Index,
+    name: 'index',
+    children: [{
+      path: '/index',
       component: Index,
       name: 'index',
-      children: [{
-        path: '/index',
-        component: Index,
-        name: 'index',
-        meta: {
-          title: '首页',
-          showHeader: false,
-          showFooter: true
-        }
-      }]
-    },
-    {
-      path: '/league',
-      component: League,
-      name: 'league',
       meta: {
-        title: 'League',
+        title: '首页',
         showHeader: false,
         showFooter: true
       }
+    }]
+  },
+  {
+    path: '/league',
+    component: League,
+    name: 'league',
+    meta: {
+      title: 'League',
+      showHeader: false,
+      showFooter: true
     }
+  },
+  {
+    path: '/team',
+    component: Team,
+    name: 'team',
+    meta: {
+      title: '球队',
+      showHeader: false,
+      showFooter: true
+    }
+  },
+  {
+    path: '/user',
+    component: User,
+    name: 'user',
+    meta: {
+      title: '我的信息',
+      showHeader: false,
+      showFooter: true
+    }
+  }
   ]
 })
 

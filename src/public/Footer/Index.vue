@@ -10,12 +10,14 @@
       <img v-else class="item-icon" src="~@/assets/images/footer/league.png">
       <div class="item-name">赛事</div>
     </div>
-    <div :class="['menu-item', menuPage=='team'?'active':'']">
-      <img class="item-icon" src="~@/assets/images/footer/team.png">
+    <div :class="['menu-item', menuPage=='team'?'active':'']" @click.stop="goTeam">
+      <img v-if="menuPage=='team'" class="item-icon" src="~@/assets/images/footer/team-active.png">
+      <img v-else class="item-icon" src="~@/assets/images/footer/team.png">
       <div class="item-name">球队</div>
     </div>
-    <div :class="['menu-item', menuPage=='user'?'active':'']">
-      <img class="item-icon" src="~@/assets/images/footer/user.png">
+    <div :class="['menu-item', menuPage=='user'?'active':'']" @click.stop="goUser">
+      <img v-if="menuPage=='user'" class="item-icon" src="~@/assets/images/footer/user-active.png">
+      <img v-else class="item-icon" src="~@/assets/images/footer/user.png">
       <div class="item-name">我</div>
     </div>
   </div>
@@ -41,6 +43,12 @@ export default {
     },
     goLeague () {
       this.$router.replace({ path: '/league' })
+    },
+    goTeam () {
+      this.$router.replace({ path: '/team' })
+    },
+    goUser () {
+      this.$router.replace({ path: '/user' })
     }
   },
   watch: {
