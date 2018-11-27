@@ -3,7 +3,9 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const fs = require('fs');
 const ip = require('ip')
+const ballConf = JSON.parse(fs.readFileSync(path.join(__dirname, '../../', 'package.json'))).ball;
 
 module.exports = {
   dev: {
@@ -11,28 +13,30 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      "/mvc/**": {
-        "target": "http://dev.cyb.kuaiqiangche.cc",
-        "changeOrigin": true,
-        "secure": true
-      }
-    },
+    // proxyTable: {
+    //   "/mvc/**": {
+    //     "target": "http://dev.cyb.kuaiqiangche.cc",
+    //     "changeOrigin": true,
+    //     "secure": true
+    //   }
+    // },
+    // 请求代理表，在这里可以配置特定的请求代理到对应的API接口
+    // 例如将'/api/xxx'代理到'www.example.com/api/xxx'
+    proxyTable: ballConf.proxyTable,
 
     // Various Dev Server settings
     host: ip.address(), // ip地址。默认寻找本机ip
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: true,
-    errorOverlay: true,
-    notifyOnErrors: true,
-    poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
-
+    port: ballConf.devPort, // 开发端口号，当端口号被占用时，主动递增寻找可用的端口号
+    autoOpenBrowser: true, //服务启动时，是否自动打开浏览器
+    errorOverlay: true, //当出现编译器错误或警告时，在浏览器中显示全屏叠加
+    notifyOnErrors: true, //出现错误时，notifier调用操作系统的提示框
+    poll: false, // 是否开启轮询监控代码发生更改 https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
     // Use Eslint Loader?
-    // If true, your code will be linted during bundling and
-    // linting errors and warnings will be shown in the console.
+    // 设置true，项目在启动的时，会自动lint代码
+    // 错误和警告将被显示在控制台
     useEslint: true,
-    // If true, eslint errors and warnings will also be shown in the error overlay
-    // in the browser.
+    //如果为true，在浏览器中
+    //eslint错误和警告也会显示在错误覆盖
     showEslintErrorsInOverlay: false,
 
     /**
@@ -42,8 +46,8 @@ module.exports = {
     // https://webpack.js.org/configuration/devtool/#development
     devtool: 'cheap-module-eval-source-map',
 
-    // If you have problems debugging vue-files in devtools,
-    // set this to false - it *may* help
+    // 是否通过给文件名后加哈希查询值来避免生成的 source map 被缓存。
+    // 关掉这一选项有益于 source map 调试。
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
     cacheBusting: true,
 
