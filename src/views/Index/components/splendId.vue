@@ -6,30 +6,26 @@
       <div class="more">更多</div>
     </div>
     <!-- 精彩赛事 -->
-    <div
-      class="splend-item"
-      v-for="(item, index) in list"
-      :key="index"
-    >
-      <img
-        class="splend-league-bg"
-        :src="item.imgUrl"
-      >
+    <div class="splend-item" v-for="(item, index) in list" :key="index">
+      <img class="splend-league-bg" :src="item.imgUrl">
     </div>
     <!-- 模拟对应赛事的对阵信息 -->
     <div class="splend-item-swiper">
-      <swiper
-        ref="againstList"
-        :options="swiperOption"
-      >
-        <swiper-slide
-          v-for="(item, index) in 3"
-          :key="index"
-        >
+      <swiper ref="againstList" :options="swiperOption">
+        <swiper-slide v-for="(item, index) in 3" :key="index">
           <div class="against-card">
             <div class="camp-info">
               <div class="camp-time">11-24 12:00</div>
               <div class="camp-address">南京明基医院</div>
+            </div>
+            <div class="camp-schdule">
+              <div class="team-logo">
+                <img src="@/assets/images/home/team-l1.png" >
+              </div>
+              <div class="schdule-info">VS</div>
+              <div class="team-logo">
+                <img src="@/assets/images/home/team-l2.jpg" >
+              </div>
             </div>
           </div>
         </swiper-slide>
@@ -46,7 +42,7 @@ export default {
     swiper,
     swiperSlide
   },
-  data () {
+  data() {
     return {
       list: [
         {
@@ -66,10 +62,10 @@ export default {
       }
     }
   },
-  created () {
+  created() {
 
   },
-  mounted () {
+  mounted() {
 
   },
   methods: {
@@ -160,6 +156,23 @@ export default {
         .camp-address {
           font-size: 40px;
           color: #333;
+        }
+      }
+
+      .camp-schdule {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+
+        .team-logo {
+          margin: 0 20px;
+          width: 200px;
+          height: 200px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
         }
       }
     }
