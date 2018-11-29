@@ -19,7 +19,6 @@
     var width = documentEl.clientWidth
     if (width / dpr > maxwidth) {
       width = maxwidth * 1
-      console.log(width, designScale, rootFontSize)
     }
     // documentEl.style.fontSize = width / designScale + 'px'
     documentEl.style.fontSize = width / designScale / rootFontSize * 100 + '%'

@@ -6,26 +6,13 @@
       <div class="more">更多</div>
     </div>
     <!-- 精彩赛事 -->
-    <div
-      class="splend-item"
-      v-for="(item, index) in list"
-      :key="index"
-    >
-      <img
-        class="splend-league-bg"
-        :src="item.imgUrl"
-      >
+    <div class="splend-item" v-for="(item, index) in list" :key="index">
+      <img class="splend-league-bg" :src="item.imgUrl">
     </div>
     <!-- 模拟对应赛事的对阵信息 -->
     <div class="splend-item-swiper">
-      <swiper
-        ref="againstList"
-        :options="swiperOption"
-      >
-        <swiper-slide
-          v-for="(item, index) in 3"
-          :key="index"
-        >
+      <swiper ref="againstList" :options="swiperOption">
+        <swiper-slide v-for="(item, index) in 3" :key="index">
           <div class="against-card">
             <div class="camp-info">
               <div class="camp-time">11-24 12:00</div>

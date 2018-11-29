@@ -1,11 +1,15 @@
 <template>
   <div class="page">
-    球队
+    <grab></grab>
   </div>
 </template>
 
 <script>
+import Grab from './components/grab'
 export default {
+  components: {
+    Grab
+  },
   data () {
     return {
 
