@@ -18,6 +18,15 @@
               <div class="camp-time">11-24 12:00</div>
               <div class="camp-address">南京明基医院</div>
             </div>
+            <div class="camp-schdule">
+              <div class="team-logo">
+                <img src="@/assets/images/home/team-l1.png" >
+              </div>
+              <div class="schdule-info">VS</div>
+              <div class="team-logo">
+                <img src="@/assets/images/home/team-l2.jpg" >
+              </div>
+            </div>
           </div>
         </swiper-slide>
       </swiper>
@@ -33,7 +42,7 @@ export default {
     swiper,
     swiperSlide
   },
-  data () {
+  data() {
     return {
       list: [
         {
@@ -53,10 +62,10 @@ export default {
       }
     }
   },
-  created () {
+  created() {
 
   },
-  mounted () {
+  mounted() {
 
   },
   methods: {
@@ -147,6 +156,23 @@ export default {
         .camp-address {
           font-size: 40px;
           color: #333;
+        }
+      }
+
+      .camp-schdule {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+
+        .team-logo {
+          margin: 0 20px;
+          width: 200px;
+          height: 200px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
         }
       }
     }
