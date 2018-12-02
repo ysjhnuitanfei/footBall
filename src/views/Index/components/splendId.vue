@@ -42,7 +42,7 @@ export default {
     swiper,
     swiperSlide
   },
-  data() {
+  data () {
     return {
       list: [
         {
@@ -62,10 +62,10 @@ export default {
       }
     }
   },
-  created() {
+  created () {
 
   },
-  mounted() {
+  mounted () {
 
   },
   methods: {

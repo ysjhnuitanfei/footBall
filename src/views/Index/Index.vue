@@ -16,13 +16,13 @@ export default {
     headerNav,
     splendId
   },
-  data() {
+  data () {
     return {
     }
   },
   methods: {
   },
-  mounted() {
+  mounted () {
 
   }
 }
