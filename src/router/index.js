@@ -8,12 +8,14 @@ const League = resolve => require(['@/views/League/Index'], resolve)
 const Team = resolve => require(['@/views/Team/Index'], resolve)
 const User = resolve => require(['@/views/User/Index'], resolve)
 
+const Lottery = resolve => require(['@/views/Lottery/Index'], resolve)
+
 let router = new Router({
   routes: [{
     path: '/',
     redirect: 'index',
     component: Index,
-    name: 'index',
+    name: '',
     children: [{
       path: '/index',
       component: Index,
@@ -54,6 +56,16 @@ let router = new Router({
       title: '我的信息',
       showHeader: false,
       showFooter: true
+    }
+  },
+  {
+    path: '/lottery',
+    component: Lottery,
+    name: 'lottery',
+    meta: {
+      title: '抽奖',
+      showHeader: true,
+      showFooter: false
     }
   }
   ]

@@ -37,7 +37,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 144px;
+  height: 120px;
   box-shadow: 0 1px 1px #999;
   background: #fff;
   z-index: 9999;
@@ -49,8 +49,8 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    width: 144px;
-    height: 144px;
+    width: 120px;
+    height: 120px;
   }
   .header-title {
     flex: 1;

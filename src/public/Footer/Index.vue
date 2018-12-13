@@ -61,11 +61,13 @@ export default {
 
 <style lang="less" scoped>
 .footer-content {
+  position: relative;
   width: 100%;
   height: 140px;
   border-top: solid 1px #999;
   font-size: 0;
   text-align: center;
+  z-index: 99999;
   .menu-item {
     width: 25%;
     float: left;

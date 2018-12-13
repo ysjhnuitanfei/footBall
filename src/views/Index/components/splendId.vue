@@ -24,7 +24,7 @@
               </div>
               <div class="schdule-info">VS</div>
               <div class="team-logo">
-                <img src="@/assets/images/home/team-l2.jpg" >
+                <img src="@/assets/images/home/team-l1.png" >
               </div>
             </div>
           </div>
