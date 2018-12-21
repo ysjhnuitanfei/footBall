@@ -1,10 +1,14 @@
 <template>
   <div class="spinners" v-if="isLoading">
-    <div class="preloader">
+    <!-- <div class="preloader">
       <span></span>
       <span></span>
       <span></span>
       <span></span>
+    </div> -->
+    <div class="laodingCon">
+        <div class="ball"></div>
+        <div class="ballshadow"></div>
     </div>
   </div>
 </template>
@@ -33,7 +37,35 @@ export default {
   height: 100%;
   background: rgba(255, 255, 255, 0.95);
   transform: translate(-50%, -50%);
+  display:flex;/*多轮布局*/
+  align-items:center;/*垂直*/
+  justify-content:center;/*水平*/
   z-index: 9999;
+  // 足球loading
+  .laodingCon{
+    width:120px;height: 150px;
+    .ball {
+      -webkit-animation: ball 300ms cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite alternate;
+      -ms-animation: ball 300ms cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite alternate;
+      -moz-animation: ball 300ms cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite alternate;
+      animation: ball 300ms cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite alternate;
+      height: 120px;
+      width: 120px;
+      background: url('~@/assets/images/loading/loading-ball.png') no-repeat center;
+      background-size: 100%
+    }
+    .ballshadow {
+      -webkit-animation: shadow 300ms cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite alternate;
+      animation: shadow 300ms cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite alternate;
+      background: #000;
+      margin-left: 10px;
+      height: 30px;
+      width: 100px;
+      -webkit-animation-delay: 0; animation-delay: 0;
+      border-radius: 100%;
+    }
+  }
+  // 方块loading
   .preloader {
     position: absolute;
     top: 50%;
@@ -71,6 +103,27 @@ export default {
   }
 }
 
+// 足球动画
+@keyframes ball {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50px);
+  }
+}
+@keyframes shadow {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.3);
+  }
+  100% {
+    opacity: 0.05;
+    transform: scale(1);
+  }
+}
+
+// 方块动画
 @keyframes preloader {
   from {
     transform: rotate(0deg);

@@ -6,12 +6,17 @@ import router from './router'
 import VueResource from 'vue-resource'
 import store from './store/'
 
+import VueLazyLoad from 'vue-lazyload'
+
 // 以插件形式引入toast组件
-import {
-  ToastPlugin
-} from 'vux'
+import {ToastPlugin} from 'vux'
+
 Vue.use(ToastPlugin)
 Vue.use(VueResource)
+Vue.use(VueLazyLoad, {
+  error: './static/errorimg.png',
+  loading: './static/loading.gif'
+})
 
 Vue.config.productionTip = false
 

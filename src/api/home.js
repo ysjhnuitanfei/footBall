@@ -1,16 +1,18 @@
 import fetch from '@/utils/fetch'
 
 export default {
-  list (params) {
+  // 获取首页赛事信息，资讯
+  getBanner (params) {
     return fetch({
-      url: 'http://dev.cyb.kuaiqiangche.cc/event/yzdg/car_list',
+      url: '/static/data/home.do',
       method: 'get',
       params
     })
   },
-  order (params) {
+  // 获取动态
+  getReply (params) {
     return fetch({
-      url: 'http://dev.cyb.kuaiqiangche.cc/event/yzdg/order',
+      url: '/static/data/reply.do',
       method: 'get',
       params
     })

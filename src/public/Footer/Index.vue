@@ -67,6 +67,7 @@ export default {
   border-top: solid 1px #999;
   font-size: 0;
   text-align: center;
+  background: #fff;
   z-index: 99999;
   .menu-item {
     width: 25%;

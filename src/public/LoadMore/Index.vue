@@ -3,7 +3,7 @@
     <slot></slot>
     <div class="load-state" v-if="showState">
       <div class="finish" v-if="finish">
-        <span>加载完成</span>
+        <span>没有更多数据了</span>
       </div>
       <div class="more" v-else>
         <div class="loading-animation">
@@ -66,7 +66,7 @@ export default {
       }
       var bottom = this.$el.getBoundingClientRect().bottom
       // 当内容滚动到距离底部<100时
-      if (bottom - 100 < window.innerHeight && !this.loading && !this.finish) {
+      if (bottom - 20 < window.innerHeight && !this.loading && !this.finish) {
         this.loading = true
         setTimeout(() => {
           this.$emit('loadMore')
@@ -107,8 +107,8 @@ export default {
     justify-content: center;
     width: 100%;
     height: 100px;
-    font-size: 42px;
-    color: #f50057;
+    font-size: 36px;
+    color: #999;
     .finish {
       display: flex;
       justify-content: center;
@@ -128,7 +128,7 @@ export default {
           position: absolute;
           width: 100%;
           height: 100%;
-          border: 4px solid #f50057;
+          border: 4px solid #999;
           border-left-color: transparent;
           border-bottom: 0;
           border-radius: 50%;
@@ -141,7 +141,7 @@ export default {
           top: calc(50% - 15px);
           width: 30px;
           height: 30px;
-          border: 4px solid #f50057;
+          border: 4px solid #999;
           border-right: 0;
           border-top-color: transparent;
           border-radius: 50%;

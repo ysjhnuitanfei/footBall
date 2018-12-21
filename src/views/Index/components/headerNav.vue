@@ -1,7 +1,7 @@
 <template>
-  <div class='headerInfo'>
+  <div class='header-info'>
     <swiper ref="mySwiper" :options="swiperOption">
-      <swiper-slide v-for="(item, index) in swiperList" :key="index">
+      <swiper-slide v-for="(item, index) in bannerList" :key="index">
         <img class="banner-img" :src="item.imgUrl">
         <div class="banner-text">{{item.title}}</div>
       </swiper-slide>
@@ -14,34 +14,13 @@ import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
   name: 'headerinfo',
+  props: ['bannerList'],
   components: {
     swiper,
     swiperSlide
   },
   data () {
     return {
-      swiperList: [
-        {
-          title: '巴西双循环11人制火热进行中',
-          imgUrl: require('@/assets/images/home/banner1.jpg')
-        },
-        {
-          title: '巴西双循环11人制火热进行中',
-          imgUrl: require('@/assets/images/home/banner2.jpg')
-        },
-        {
-          title: '巴西双循环11人制火热进行中',
-          imgUrl: require('@/assets/images/home/banner3.jpg')
-        },
-        {
-          title: '巴西双循环11人制火热进行中',
-          imgUrl: require('@/assets/images/home/banner4.jpg')
-        },
-        {
-          title: '巴西双循环11人制火热进行中',
-          imgUrl: require('@/assets/images/home/banner5.jpg')
-        }
-      ],
       swiperOption: {
         pagination: {
           el: '.swiper-pagination'
@@ -49,7 +28,7 @@ export default {
         paginationClickable: true,
         autoplay: true,
         autoplayDisableOnInteraction: false,
-        loop: true,
+        loop: false,
         coverflow: {
           rotate: 30,
           stretch: 10,
@@ -61,8 +40,10 @@ export default {
     }
   },
   created () {
+
   },
   methods: {
+
   },
   mounted () {
   },
@@ -73,10 +54,11 @@ export default {
   }
 }
 </script>
-<style lang="less">
-.headerInfo {
+<style lang="less" scoped>
+.header-info {
   position: relative;
   height: 550px;
+  background: #fff;
   .swiper-container {
     position: relative;
     height: 100%;
@@ -93,7 +75,7 @@ export default {
     .banner-img {
       width: 100%;
       height: 100%;
-      background: #00a7f2;
+      background: #ccc;
     }
     .banner-text {
       position: absolute;

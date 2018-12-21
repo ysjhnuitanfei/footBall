@@ -6,30 +6,35 @@
       <div class="more">更多</div>
     </div>
     <!-- 精彩赛事 -->
-    <div class="splend-item" v-for="(item, index) in list" :key="index">
-      <img class="splend-league-bg" :src="item.imgUrl">
-    </div>
-    <!-- 模拟对应赛事的对阵信息 -->
-    <div class="splend-item-swiper">
-      <swiper ref="againstList" :options="swiperOption">
-        <swiper-slide v-for="(item, index) in 3" :key="index">
-          <div class="against-card">
-            <div class="camp-info">
-              <div class="camp-time">11-24 12:00</div>
-              <div class="camp-address">南京明基医院</div>
-            </div>
-            <div class="camp-schdule">
-              <div class="team-logo">
-                <img src="@/assets/images/home/team-l1.png" >
+    <div class="splend-item" v-for="(item, index) in hot" :key="index">
+      <div class="splend-img clearfix">
+        <img class="splend-league-bg" :src="item.imgUrl">
+      </div>
+      <!-- 模拟对应赛事的对阵信息 -->
+      <div class="splend-item-swiper">
+        <swiper ref="againstList" :options="swiperOption">
+          <swiper-slide v-for="(list, round) in item.list" :key="round">
+            <div class="against-card">
+              <div class="camp-info">
+                <div class="camp-round">第{{ list.round }}轮</div>
+                <div class="camp-time">{{ list.startTime }}</div>
               </div>
-              <div class="schdule-info">VS</div>
-              <div class="team-logo">
-                <img src="@/assets/images/home/team-l1.png" >
+              <div class="camp-schdule">
+                <div class="team-logo">
+                  <img :src="list.homeLogo" >
+                  <div class="team-name">{{ list.homeName }}</div>
+                </div>
+                <div class="schdule-info">{{ list.score }}</div>
+                <div class="team-logo">
+                  <img :src="list.awayLogo" >
+                  <div class="team-name">{{ list.awayName }}</div>
+                </div>
               </div>
+              <div class="camp-address">{{ list.address }}</div>
             </div>
-          </div>
-        </swiper-slide>
-      </swiper>
+          </swiper-slide>
+        </swiper>
+      </div>
     </div>
   </div>
 </template>
@@ -38,27 +43,20 @@
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
+  name: '',
+  props: ['hot'],
   components: {
     swiper,
     swiperSlide
   },
   data () {
     return {
-      list: [
-        {
-          imgUrl: require('@/assets/images/home/league1.png')
-        },
-        {
-          imgUrl: require('@/assets/images/home/league2.png')
-        }
-      ],
       // swiper参数
       swiperOption: {
         slidesPerView: 'auto',
         spaceBetween: 30,
         resistanceRatio: 0.7,
         autoplayDisableOnInteraction: false
-
       }
     }
   },
@@ -76,7 +74,8 @@ export default {
 
 <style lang="less" scoped>
 .splend {
-  padding: 0 40px;
+  padding: 0 40px 40px 40px;
+  background: #fff;
   .splend-title {
     position: relative;
     height: 120px;
@@ -104,18 +103,17 @@ export default {
       right: 0;
       top: 30px;
       width: 120px;
-      height: 60px;
-      text-align: center;
       line-height: 60px;
-      font-size: 30px;
+      text-align: center;
+      font-size: 32px;
       color: #fff;
       background: linear-gradient(to right, #00a7f2, #41a1f5);
-      border-radius: 15px;
+      border-radius: 50px;
     }
   }
 
   .splend-item {
-    margin-top: 20px;
+    margin-top: 40px;
     .splend-league-bg {
       display: block;
       width: 1000px;
@@ -136,43 +134,105 @@ export default {
       border-color: transparent transparent #fff; /*透明 透明  灰*/
     }
     .swiper-slide {
-      margin-top: 20px;
-      width: 900px;
+      margin-top: 10px;
+      width: 850px;
       /* prettier-ignore */
-      border: solid 2px #ccc;
+      border: solid 1px #ccc;
       border-radius: 15px;
       overflow: hidden;
     }
     .against-card {
-      height: 300px;
+      height: auto;
+      overflow: hidden;
       .camp-info {
+        position: relative;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
+        align-items: center;
         padding: 20px;
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 30px;
+          right: 30px;
+          height: 1px;
+          background: #ccc;
+        }
+        .camp-round {
+          position: relative;
+          margin-left: 20px;
+          width: 120px;
+          line-height: 50px;
+          text-align: center;
+          font-size: 32px;
+          color: #fff;
+          &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #41a1f5;
+            transform: skewX(-20deg);
+            z-index: -1;
+          }
+        }
         .camp-time {
+          margin-left: 20px;
           font-size: 36px;
           color: #666;
-        }
-        .camp-address {
-          font-size: 40px;
-          color: #333;
         }
       }
 
       .camp-schdule {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
+        margin-top: 20px;
         padding: 0 20px;
 
         .team-logo {
           margin: 0 20px;
-          width: 200px;
-          height: 200px;
+          width: 300px;
+          text-align: center;
+          font-size: 0;
           img {
-            width: 100%;
-            height: 100%;
+            width: 180px;
+            height: 180px;
           }
+          .team-name {
+            line-height: 60px;
+            font-size: 32px;
+            color: #333;
+          }
+        }
+        .schdule-info {
+          padding-bottom: 60px;
+          width: 200px;
+          text-align: center;
+          font-size: 48px;
+          color: #333;
+        }
+      }
+
+      .camp-address {
+        position: relative;
+        padding: 5px 30px 5px 80px;
+        line-height: 50px;
+        font-size: 32px;
+        color: #666;
+        background: url('~@/assets/images/icon/map.png') no-repeat 30px center;
+        background-size: 40px 40px;
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 30px;
+          right: 30px;
+          height: 1px;
+          background: #ccc;
         }
       }
     }

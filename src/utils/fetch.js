@@ -21,9 +21,7 @@ service.interceptors.request.use(
 
     // 开启loading
     if (config.params.loading) {
-      store.commit('loadingStatus', {
-        isLoading: true
-      })
+      Utils.showLoading()
     }
     delete config.params.loading
     if (config.params.acceptError) {
@@ -60,8 +58,31 @@ service.interceptors.response.use(
     return result
   },
   error => {
-    Utils.toast('接口异常')
-    return Promise.reject(error)
+    // 如果断网
+    if (!window.navigator.onLine) {
+      error.message = '网络异常，请检查网络设置'
+      store.commit('setError', {
+        msg: error.message,
+        show: true
+      })
+    }
+    if (this.acceptError) {
+      Utils.hiddenLoading()
+      return Promise.resolve({
+        code: 'ERROR',
+        msg: error.message
+      })
+    } else {
+      console.log('错误信息：' + error)
+      if (error.message == 'Network Error') {
+        error.message = '页面加载异常，请检查您的网络情况'
+      }
+      store.commit('setError', {
+        msg: error.message,
+        show: true
+      })
+      return Promise.reject(error)
+    }
   }
 )
 
