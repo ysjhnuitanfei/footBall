@@ -21,7 +21,7 @@ let router = new Router({
       component: Index,
       name: 'index',
       meta: {
-        title: '首页',
+        title: '球迷宝',
         showHeader: false,
         showFooter: true,
         keepAlive: true
@@ -33,7 +33,7 @@ let router = new Router({
     component: League,
     name: 'league',
     meta: {
-      title: 'League',
+      title: '赛事',
       showHeader: false,
       showFooter: true
     }
@@ -72,9 +72,9 @@ let router = new Router({
 })
 
 router.beforeEach(function (to, from, next) {
-  if (to.path) {
-    window._hmt.push(['_trackPageview', '/#' + to.fullPath])
-  }
+  // if (to.path) {
+  //   window._hmt.push(['_trackPageview', '/#' + to.fullPath])
+  // }
   if (!window.navigator.onLine) {
     // 网络断开
     store.commit('setError', {

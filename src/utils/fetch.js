@@ -17,13 +17,13 @@ service.interceptors.request.use(
     if (!config.params) {
       config.params = config.params || {}
     }
-    config.autoCloseLoading = config.params.loading
+    config.autoCloseLoading = config.params.noLoading
 
     // 开启loading
-    if (config.params.loading) {
+    if (!config.params.noLoading) {
       Utils.showLoading()
     }
-    delete config.params.loading
+    delete config.params.noLoading
     if (config.params.acceptError) {
       config.acceptError = true
       delete config.params.acceptError

@@ -3,7 +3,7 @@
     <div :class="['menu-item', menuPage=='index'?'active':'']" @click.stop="goHome">
       <img v-if="menuPage=='index'" class="item-icon" src="~@/assets/images/footer/home-active.png">
       <img v-else class="item-icon" src="~@/assets/images/footer/home.png">
-      <div class="item-name">首页</div>
+      <div class="item-name">热门</div>
     </div>
     <div :class="['menu-item', menuPage=='league'?'active':'']" @click.stop="goLeague">
       <img v-if="menuPage=='league'" class="item-icon" src="~@/assets/images/footer/league-active.png">

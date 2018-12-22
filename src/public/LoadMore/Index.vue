@@ -33,31 +33,33 @@ export default {
   mounted () {
     // 获取组件内容可视区域的高
     if (this.$el) {
-      this.domClientHeight = window.innerHeight - this.$el.getBoundingClientRect().top
+      this.domClientHeight = document.querySelector('.home-page').clientHeight - this.$el.getBoundingClientRect().top
     } else {
-      this.domClientHeight = window.innerHeight
+      this.domClientHeight = document.querySelector('.home-page').clientHeight
     }
-    this.switchBottom()
+    // this.switchBottom()
     this.bindSrcoll()
   },
   methods: {
     switchBottom () {
       this.$nextTick(() => {
-        // 判断容器内容是否 大于 （网页可视区域-自身距离顶部距离）
-        if (this.$el.scrollHeight > this.domClientHeight) {
-          this.showState = true
-        } else {
-          // 如果页面不足一屏且还有下一页数据，继续执行加载更多方法
-          if (!this.finish) {
+        setTimeout(() => {
+          // 判断容器内容是否 大于 （网页可视区域-自身距离顶部距离）
+          if (this.$el.scrollHeight > this.domClientHeight) {
             this.showState = true
-            setTimeout(() => {
-              this.$emit('loadMore')
-            }, 1000)
           } else {
+          // 如果页面不足一屏且还有下一页数据，继续执行加载更多方法
+            if (!this.finish) {
+              this.showState = true
+              setTimeout(() => {
+                this.$emit('loadMore')
+              }, 1000)
+            } else {
             // 否则不显示底部加载状态
-            this.showState = false
+              this.showState = false
+            }
           }
-        }
+        }, 100)
       })
     },
     async scrollPage () {
@@ -87,7 +89,7 @@ export default {
   },
   // 如果有用到keep-alive，组件激活时调用
   activated () {
-    this.switchBottom()
+    // this.switchBottom()
   },
   // 页面销毁，移除滚动监听
   beforeDestroy () {

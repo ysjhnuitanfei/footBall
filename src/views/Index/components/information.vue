@@ -3,10 +3,10 @@
     <!-- 公共标题 -->
     <div class="splend-title clearfix">
       <div class="text">精彩资讯</div>
-      <div class="more">更多</div>
+      <div class="more" @click="golottery">更多</div>
     </div>
     <!-- 内容部分 -->
-    <div class="infor-info-content">
+    <div class="infor-info-content" v-if="information.length > 0">
       <div class="infor-item" v-for="(item, index) in information" :key="index">
         <img class="infor-cover" v-lazy="item.cover">
         <div class="infor-info">
@@ -18,6 +18,10 @@
         </div>
       </div>
     </div>
+    <div class="default-page" v-if="isReply">
+      <img src="@/assets/images/icon/default.png">
+      <span>暂无内容！</span>
+    </div>
   </div>
 </template>
 <script>
@@ -28,11 +32,24 @@ export default {
   },
   data () {
     return {
+      isReply: false
     }
   },
   mounted () {
   },
   methods: {
+    golottery () {
+      this.$router.push({ path: '/lottery' })
+    }
+  },
+  watch: {
+    information (val) {
+      if (val.length < 1) {
+        this.isReply = true
+      } else {
+        this.isReply = false
+      }
+    }
   }
 }
 </script>
@@ -119,6 +136,21 @@ export default {
           }
         }
       }
+    }
+  }
+
+  .default-page {
+    padding: 50px 0;
+    text-align: center;
+    img {
+      margin: auto;
+      width: 300px;
+    }
+    span {
+      display: inline-block;
+      width: 100%;
+      font-size: 34px;
+      color: #999;
     }
   }
 }

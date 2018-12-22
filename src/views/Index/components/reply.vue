@@ -6,9 +6,9 @@
       <div class="more">更多</div>
     </div>
     <div class="reply-content clearfix" v-if="replyList.length > 0">
-      <LoadMore ref="LoadMore" @loadMore="loadMore">
+      <!-- <LoadMore ref="LoadMore" @loadMore="loadMore"> -->
         <div class="reply-item" v-for="(item, index) in replyList" :key="index">
-          <div class="reply-title ellipsis-line-2">{{ item.title }}</div>
+          <div class="reply-title ellipsis-line-2" v-if="item.title">{{ item.title }}</div>
           <div :class="['reply-img', item.imgArr.length > 1 ? 'reply-imgs' : '']" v-if="item.imgArr">
             <img :class="[item.imgArr.length == 1 ? 'reply-img-1': [item.imgArr.length == 2 ? 'reply-img-2':'reply-img-3']]" v-for="(img, size) in item.imgArr" :key="size" v-lazy="img">
             <div class="reply-count" v-if="item.count">{{ item.count }}图</div>
@@ -18,62 +18,37 @@
             <div class="read">{{ item.read }}</div>
           </div>
         </div>
-      </LoadMore>
+      <!-- </LoadMore> -->
     </div>
-    <div v-else>暂无动态！</div>
+    <div class="default-page" v-if="isReply">
+      <img src="@/assets/images/icon/default.png">
+      <span>暂无内容！</span>
+    </div>
   </div>
 </template>
 <script>
-import API from '@/api'
-import LoadMore from '@/public/LoadMore/Index.vue'
 export default {
   name: '',
+  props: ['replyList'],
   components: {
-    LoadMore
   },
   data () {
     return {
-      replyList: [],
-      pageIndex: -1
+      isReply: false
     }
   },
   mounted () {
-    this.getReply()
+    // this.getReply()
   },
   methods: {
-    loadMore () {
-      this.getReply()
-    },
-    async getReply () {
-      this.pageIndex++
-      var result = await API.home.getReply({
-        noLoading: true,
-        acceptError: true,
-        page: this.pageIndex
-      })
-      if (result.code == 0) {
-        var news = result.data.news
-        news = news.splice(this.pageIndex * 10, 10)
-        this.replyList = this.replyList.concat(news)
-        if (this.replyList) {
-          this.replyList.forEach(item => {
-            if (item && item.imgArr && item.imgArr.length > 3) {
-              item.count = item.imgArr.length
-              item.imgArr = item.imgArr.splice(0, 3)
-            }
-          })
-        }
-        if (news.length < 10) {
-          if (this.$refs.LoadMore) {
-            this.$refs.LoadMore.finish = true
-          }
-        }
-      } else {
-        console.log('error')
-      }
 
-      if (this.$refs.LoadMore) {
-        this.$refs.LoadMore.loading = false
+  },
+  watch: {
+    replyList (val) {
+      if (val.length < 1) {
+        this.isReply = true
+      } else {
+        this.isReply = false
       }
     }
   }
@@ -147,15 +122,17 @@ export default {
         background: #f0f0f0;
         &.reply-img-1 {
           width: 100%;
-          height: 300px;
+          height: 400px;
         }
         &.reply-img-2 {
+          margin-left: 0;
           width: 490px;
-          height: 260px;
+          height: 300px;
         }
         &.reply-img-3 {
+          margin-left: 0;
           width: 320;
-          height: 240px;
+          height: 300px;
         }
         &:first-of-type {
           margin-left: 0;
@@ -192,6 +169,21 @@ export default {
         background: url('~@/assets/images/icon/look.png') no-repeat left center;
         background-size: 34px 34px;
       }
+    }
+  }
+
+  .default-page {
+    padding: 50px 0;
+    text-align: center;
+    img {
+      margin: auto;
+      width: 300px;
+    }
+    span {
+      display: inline-block;
+      width: 100%;
+      font-size: 34px;
+      color: #999;
     }
   }
 }

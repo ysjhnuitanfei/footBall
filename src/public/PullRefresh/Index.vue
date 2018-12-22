@@ -1,5 +1,5 @@
 <template>
-  <div class="page" :class="{'page-hidden':state != 0}">
+  <div class="pull-refresh" :class="{'page-hidden':state != 0}">
     <div class="pull-down-content clearfix">
       <div class="refresh-state flex flex-center">
         <div class="loading-pull  trans-rotate" v-if="state == 0">
@@ -17,7 +17,6 @@
         <div class="loading-pull trans-rotate-none" v-if="state == 4">
           <img class="full" src="~@/assets/images/loading/loading-error.png">
         </div>
-        <span class="pull-text">{{pullText}}</span>
       </div>
       <slot></slot>
     </div>
@@ -36,9 +35,9 @@ export default {
       moveCount: 300,
       // 0:未开始加载， 1:释放刷新， 2:刷新中， 3:刷新成功， 4:刷新失败
       state: 0,
-      pullText: '', // 不同阶段的提示文字
       dragStart: null, // 触发下拉时初始Y坐标位置
-      refreshing: false // 是否在下拉或刷新过程中,作用：当处于刷新过程中，不可再进行下拉防止重复触发刷新
+      refreshing: false, // 是否在下拉或刷新过程中,作用：当处于刷新过程中，不可再进行下拉防止重复触发刷新
+      percentage: null
     }
   },
   mounted () {
@@ -84,10 +83,8 @@ export default {
           self.joinRefreshFlag = true
           // 当下拉距离大于阈值时触发
           if (Math.abs(self.percentage) > self.dragThreshold) {
-            // this.pullText = '释放刷新'
             this.state = 1
           } else {
-            // this.pullText = '下拉刷新'
             this.state = 0
           }
           // 下拉容器translateY位移
@@ -107,7 +104,7 @@ export default {
         self.joinRefreshFlag = false
       }
     },
-    touchEnd: function (event) {
+    touchEnd (event) {
       var self = this
       // 如果没有下拉动作
       if (self.percentage === 0) {
@@ -122,7 +119,6 @@ export default {
         this.$emit('pullRefresh')
         self.refreshing = true
         // 当前刷新状态
-        this.pullText = '正在刷新'
         this.state = 2
         // 容器当前样式：330毫秒位移至1.2rem位置处
         self.container.style.webkitTransition = '330ms'
@@ -144,15 +140,12 @@ export default {
     // 刷新是否成功
     finishLoad () {
       if (this.isSuccess) {
-        this.pullText = '刷新成功'
         this.state = 3
       } else {
-        this.pullText = '刷新失败'
         this.state = 4
       }
       // 1秒收执行自身，返回容器初始位置
       setTimeout(function () {
-        this.pullText = ''
         this.refreshing = false
         this.state = 0
         this.container.style.webkitTransform = 'translate3d(0,0,0)'
