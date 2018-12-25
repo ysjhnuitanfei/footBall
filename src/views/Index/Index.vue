@@ -1,7 +1,7 @@
 <template>
   <keep-alive>
     <div class="page clearfix">
-      <PullRefresh ref="PullRefresh" @pullRefresh="refresh" :isSuccess="isSuccess">
+      <Refresh ref="PullRefresh" @refresh="refresh" :isSuccess="isSuccess">
         <div class="home-page clearfix">
           <LoadMore ref="LoadMore" @loadMore="loadMore">
             <headerNav v-if="bannerList" :bannerList="bannerList"></headerNav>
@@ -10,13 +10,13 @@
             <reply v-if="replyList.length > 0" :replyList="replyList"></reply>
           </LoadMore>
         </div>
-      </PullRefresh>
+      </Refresh>
     </div>
   </keep-alive>
 </template>
 <script>
 import API from '@/api'
-import PullRefresh from '@/public/PullRefresh/Index.vue'
+import Refresh from '@/public/Refresh/Index.vue'
 import LoadMore from '@/public/LoadMore/Index.vue'
 import headerNav from './components/headerNav'
 import splendId from './components/splendId'
@@ -26,7 +26,7 @@ import reply from './components/reply'
 export default {
   name: '',
   components: {
-    PullRefresh,
+    Refresh,
     LoadMore,
     headerNav,
     splendId,

@@ -33,9 +33,9 @@ export default {
   mounted () {
     // 获取组件内容可视区域的高
     if (this.$el) {
-      this.domClientHeight = document.querySelector('.home-page').clientHeight - this.$el.getBoundingClientRect().top
+      this.domClientHeight = document.querySelector('.page').clientHeight - this.$el.getBoundingClientRect().top
     } else {
-      this.domClientHeight = document.querySelector('.home-page').clientHeight
+      this.domClientHeight = document.querySelector('.page').clientHeight
     }
     // this.switchBottom()
     this.bindSrcoll()

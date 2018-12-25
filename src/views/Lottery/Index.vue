@@ -6,7 +6,7 @@
         <div class="marqueeList" :style="{'animation-duration': marqueeSpeed + 's'}">
           <span v-for="(item, index) in marqueeList" :key="index">{{ item }}</span>
           <!--重复渲染一次-->
-          <span v-for="(item, index) in marqueeList" :key="index">{{ item }}</span>
+          <span v-for="(item, index) in marqueeList" :key="index + 10000">{{ item }}</span>
         </div>
       </div>
     </div>

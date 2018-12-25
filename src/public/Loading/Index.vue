@@ -45,9 +45,6 @@ export default {
   .laodingCon{
     width:120px;height: 150px;
     .ball {
-      -webkit-animation: ball 300ms cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite alternate;
-      -ms-animation: ball 300ms cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite alternate;
-      -moz-animation: ball 300ms cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite alternate;
       animation: ball 300ms cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite alternate;
       height: 120px;
       width: 120px;
@@ -55,13 +52,12 @@ export default {
       background-size: 100%
     }
     .ballshadow {
-      -webkit-animation: shadow 300ms cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite alternate;
       animation: shadow 300ms cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite alternate;
       background: #000;
       margin-left: 10px;
       height: 30px;
       width: 100px;
-      -webkit-animation-delay: 0; animation-delay: 0;
+      animation-delay: 0;
       border-radius: 100%;
     }
   }

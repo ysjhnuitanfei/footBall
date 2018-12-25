@@ -35,7 +35,8 @@ let router = new Router({
     meta: {
       title: '赛事',
       showHeader: false,
-      showFooter: true
+      showFooter: true,
+      keepAlive: true
     }
   },
   {

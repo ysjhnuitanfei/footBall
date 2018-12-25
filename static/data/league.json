@@ -1,0 +1,37 @@
+{
+  "code": 0,
+  "data": {
+    "hasMore": true,
+    "list": [
+      {
+        "title": "西部五超室内五人足球联赛",
+        "state": 0,
+        "day": 7,
+        "address": "武汉市",
+        "people": "5人制",
+        "type": "淘汰赛",
+        "heat": "321",
+        "cover": "./static/data/img/reply/re05.jpg"
+      },
+      {
+        "title": "东部五超室内五人足球联赛",
+        "state": 1,
+        "day": 11,
+        "address": "杭州市",
+        "people": "5人制",
+        "type": "联赛双循环",
+        "heat": "2153",
+        "cover": "./static/data/img/reply/re05.jpg"
+      },
+      {
+        "title": "西部五超室内五人足球联赛",
+        "state": 2,
+        "address": "乌鲁木齐市",
+        "people": "11人制",
+        "type": "小组赛+淘汰赛",
+        "heat": "38",
+        "cover": "./static/data/img/reply/re05.jpg"
+      }
+    ]
+  }
+}
