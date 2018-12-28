@@ -1,7 +1,7 @@
 <template>
   <div class="page clearfix">
     <div class="league">
-      <LoadMore ref="LoadMore" @loadMore="loadMore">
+      <LoadMore ref="LoadMore" @loadMore="loadMore" v-if="leagueList.length > 0">
         <div class="league-item clearfix" v-for="(item, index) in leagueList" :key="index">
           <div class="le-logo">
             <img v-lazy="item.cover" class="le-cover">
@@ -32,7 +32,7 @@ export default {
   },
   data () {
     return {
-      leagueList: null,
+      leagueList: [],
       pageIndex: -1
     }
   },
@@ -55,7 +55,7 @@ export default {
       if (result.code == 0) {
         var leagueList = result.data.list
         leagueList = leagueList.splice(this.pageIndex * 5, 5)
-        this.leagueList = leagueList
+        this.leagueList = this.leagueList.concat(leagueList)
         if (leagueList.length < 5) {
           if (this.$refs.LoadMore) {
             this.$refs.LoadMore.finish = true

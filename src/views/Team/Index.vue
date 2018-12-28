@@ -1,30 +1,21 @@
 <template>
-  <div class="page clearfix">
-    123
+  <div class='page'>
   </div>
 </template>
-
 <script>
 export default {
+  name: '',
   components: {
   },
   data () {
     return {
-
     }
   },
-  created () {
-
-  },
   mounted () {
-
   },
   methods: {
-
   }
 }
 </script>
-
-<style lang="less" scoped>
-
+<style lang="less">
 </style>

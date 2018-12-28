@@ -4,14 +4,44 @@
     "hasMore": true,
     "list": [
       {
-        "title": "西部五超室内五人足球联赛",
+        "title": "企业足球争霸赛武汉赛区",
         "state": 0,
         "day": 7,
         "address": "武汉市",
         "people": "5人制",
         "type": "淘汰赛",
         "heat": "321",
-        "cover": "./static/data/img/reply/re05.jpg"
+        "cover": "./static/data/img/league/le01.jpg"
+      },
+      {
+        "title": "企业足球争霸赛长沙赛区",
+        "state": 0,
+        "day": 7,
+        "address": "长沙市",
+        "people": "5人制",
+        "type": "淘汰赛",
+        "heat": "261",
+        "cover": "./static/data/img/league/le01.jpg"
+      },
+      {
+        "title": "少年足球-男子甲组7人制小组赛+淘汰赛",
+        "state": 0,
+        "day": 12,
+        "address": "南京市",
+        "people": "7人制",
+        "type": "小组赛+淘汰赛",
+        "heat": "78",
+        "cover": "./static/data/img/league/le02.jpg"
+      },
+      {
+        "title": "少年足球-女子甲组7人制小组赛+淘汰赛",
+        "state": 0,
+        "day": 12,
+        "address": "南京市",
+        "people": "7人制",
+        "type": "小组赛+淘汰赛",
+        "heat": "56",
+        "cover": "./static/data/img/league/le02.jpg"
       },
       {
         "title": "东部五超室内五人足球联赛",
@@ -21,16 +51,43 @@
         "people": "5人制",
         "type": "联赛双循环",
         "heat": "2153",
-        "cover": "./static/data/img/reply/re05.jpg"
+        "cover": "./static/data/img/league/le03.jpg"
       },
       {
-        "title": "西部五超室内五人足球联赛",
-        "state": 2,
+        "title": "2018“我爱踢球”大学生校园联赛男子组",
+        "state": 1,
         "address": "乌鲁木齐市",
         "people": "11人制",
         "type": "小组赛+淘汰赛",
         "heat": "38",
-        "cover": "./static/data/img/reply/re05.jpg"
+        "cover": "./static/data/img/league/le04.jpg"
+      },
+      {
+        "title": "2018-2019中国足球协会-甲组室内5人制超级联赛",
+        "state": 1,
+        "address": "全国",
+        "people": "5人制",
+        "type": "联赛",
+        "heat": "796",
+        "cover": "./static/data/img/league/le06.jpg"
+      },
+      {
+        "title": "2018-2019中国足球协会-乙组室内5人制超级联赛",
+        "state": 1,
+        "address": "北京市",
+        "people": "5人制",
+        "type": "联赛",
+        "heat": "796",
+        "cover": "./static/data/img/league/le05.jpg"
+      },
+      {
+        "title": "2017-2018中国足球协会室内五人制-呼和浩特站",
+        "state": 2,
+        "address": "呼和浩特",
+        "people": "5人制",
+        "type": "联赛",
+        "heat": "796",
+        "cover": "./static/data/img/league/le07.jpg"
       }
     ]
   }
