@@ -57,6 +57,7 @@ export default {
 <style lang="less" scoped>
 .header-info {
   position: relative;
+  width: 100%;
   height: 550px;
   background: #fff;
   .swiper-container {

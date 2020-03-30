@@ -21,12 +21,12 @@
               </div>
               <div class="camp-schdule">
                 <div class="team-logo">
-                  <img :src="list.homeLogo" >
+                  <img :src="list.homeLogo">
                   <div class="team-name">{{ list.homeName }}</div>
                 </div>
                 <div class="schdule-info">{{ list.score }}</div>
                 <div class="team-logo">
-                  <img :src="list.awayLogo" >
+                  <img :src="list.awayLogo">
                   <div class="team-name">{{ list.awayName }}</div>
                 </div>
               </div>
@@ -75,6 +75,7 @@ export default {
 <style lang="less" scoped>
 .splend {
   padding: 0 40px 40px 40px;
+  width: 100%;
   background: #fff;
   .splend-title {
     position: relative;
@@ -168,7 +169,7 @@ export default {
           font-size: 32px;
           color: #fff;
           &:after {
-            content: '';
+            content: "";
             position: absolute;
             left: 0;
             top: 0;
@@ -223,7 +224,7 @@ export default {
         line-height: 50px;
         font-size: 32px;
         color: #666;
-        background: url('~@/assets/images/icon/map.png') no-repeat 30px center;
+        background: url("~@/assets/images/icon/map.png") no-repeat 30px center;
         background-size: 40px 40px;
         &:before {
           content: "";

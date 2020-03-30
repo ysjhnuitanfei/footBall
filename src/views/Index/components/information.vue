@@ -57,6 +57,7 @@ export default {
 .infor-content {
   margin-top: 30px;
   padding: 0 40px 40px 40px;
+  width: 100%;
   background: #fff;
   .splend-title {
     position: relative;
@@ -121,7 +122,7 @@ export default {
           position: relative;
           line-height: 40px;
           font-size: 34px;
-            color: #666;
+          color: #666;
           span {
             padding-right: 100px;
           }
@@ -131,7 +132,8 @@ export default {
             top: 0;
             padding-left: 40px;
             height: 100%;
-            background: url('~@/assets/images/icon/look.png') no-repeat left center;
+            background: url("~@/assets/images/icon/look.png") no-repeat left
+              center;
             background-size: 34px 34px;
           }
         }
