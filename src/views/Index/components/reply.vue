@@ -7,17 +7,19 @@
     </div>
     <div class="reply-content clearfix" v-if="replyList.length > 0">
       <!-- <LoadMore ref="LoadMore" @loadMore="loadMore"> -->
-        <div class="reply-item" v-for="(item, index) in replyList" :key="index">
-          <div class="reply-title ellipsis-line-2" v-if="item.title">{{ item.title }}</div>
-          <div :class="['reply-img', item.imgArr.length > 1 ? 'reply-imgs' : '']" v-if="item.imgArr">
-            <img :class="[item.imgArr.length == 1 ? 'reply-img-1': [item.imgArr.length == 2 ? 'reply-img-2':'reply-img-3']]" v-for="(img, size) in item.imgArr" :key="size" v-lazy="img">
-            <div class="reply-count" v-if="item.count">{{ item.count }}图</div>
-          </div>
-          <div class="reply-source">
-            <span>{{ item.userName }}</span>
-            <div class="read">{{ item.read }}</div>
-          </div>
+      <div class="reply-item" v-for="(item, index) in replyList" :key="index">
+        <div class="reply-title ellipsis-line-2" v-if="item.title">{{ item.title }}</div>
+        <div :class="['reply-img', item.imgArr.length > 1 ? 'reply-imgs' : '']" v-if="item.imgArr">
+          <img
+            :class="[item.imgArr.length == 1 ? 'reply-img-1': [item.imgArr.length == 2 ? 'reply-img-2':'reply-img-3']]"
+            v-for="(img, size) in item.imgArr" :key="size" v-lazy="img">
+          <div class="reply-count" v-if="item.count">{{ item.count }}图</div>
         </div>
+        <div class="reply-source">
+          <span>{{ item.userName }}</span>
+          <div class="read">{{ item.read }}</div>
+        </div>
+      </div>
       <!-- </LoadMore> -->
     </div>
     <div class="default-page" v-if="isReply">
@@ -156,7 +158,7 @@ export default {
       margin-top: 20px;
       line-height: 40px;
       font-size: 34px;
-        color: #666;
+      color: #666;
       span {
         padding-right: 100px;
       }
@@ -166,7 +168,7 @@ export default {
         top: 0;
         padding-left: 40px;
         height: 100%;
-        background: url('~@/assets/images/icon/look.png') no-repeat left center;
+        background: url("~@/assets/images/icon/look.png") no-repeat left center;
         background-size: 34px 34px;
       }
     }
